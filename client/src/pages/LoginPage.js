@@ -1,3 +1,3 @@
-import Login from "./compnent/login/index.js"
+import Login from "./compnent/login/login.js"
 
 export default LoginPage

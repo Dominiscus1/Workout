@@ -29,7 +29,6 @@ function Login () {
                         <input type="text" class="form-control" id="password-signup" name="password"></input>
                     </div>
                 </form>
-
             </div>
         </div>
     )
