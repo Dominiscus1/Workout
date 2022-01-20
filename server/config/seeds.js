@@ -137,7 +137,19 @@ db.once('open', async () => {
             rest: 30,
             muscleGroup: muscleGroup[13]._id
         },
-    ])
+    ]);
+    console.log('workouts seeded');
+
+    await User.deleteMany();
+
+    await User.create({
+        firstName: 'Nicole',
+        lastName: 'Wrzosek',
+        email: "nicole@email.com",
+        password: 'password123'
+    });
+
+    console.log('users seeded')
 
 process.exit();
 });
