@@ -1,0 +1,22 @@
+img.homeImg{
+    border-radius: 10px;
+    width: 100%;
+}
+h1.title__heading{
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-align: start;
+    font-family: Montserrat,sans-serif;
+    font-size: 60px;
+}
+img.homeImg {
+    max-width: 850px;
+}
+h1.title__heading {
+    text-align: center;
+}
+@media only screen and (max-width: 1024px){
+    .p__color {
+        font-size: 15px!important;
+    }
+}
