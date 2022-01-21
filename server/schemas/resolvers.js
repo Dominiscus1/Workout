@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, MuscleGroup, Workout } = require("../models");
+const { User, MuscleGroup, Workout, Exercise } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -7,7 +7,7 @@ const resolvers = {
     muscleGroup: async () => {
       return await MuscleGroup.find();
     },
-    workouts: async (parent, { muscleGroup, name }) => {
+    exercises: async (parent, { muscleGroup, name }) => {
       const params = {};
       if (muscleGroup) {
         params.muscleGroup = muscleGroup;
@@ -17,10 +17,24 @@ const resolvers = {
           $regex: name,
         };
       }
-      return await Workout.find(params).populate("muscleGroup");
+      return await Exercise.find(params).populate("muscleGroup");
     },
-    workout: async (parent, { _id }) => {
-        return await Workout.findById(_id).populate('muscleGroup');
+    exercises: async (parent, { _id }) => {
+        return await Exercise.findById(_id).populate('muscleGroup');
+  },
+  user: async (parent, args, context) => {
+    if (context.user) {
+      const user = await User.findById(context.user._id).populate({
+        path: 'orders.products',
+        populate: 'category'
+      });
+
+      user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+      return user;
+    }
+
+    throw new AuthenticationError('Not logged in');
   },
     
 }};

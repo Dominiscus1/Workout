@@ -64,12 +64,6 @@
   .pz__10{
     padding: 10px 0px;
   }
-  .coral{
-    color: #F77272;
-  }
-  .teal{
-    color: #B2EDE5;
-  }
   .row{
     display: flex;
     width: 100%;
@@ -119,8 +113,8 @@
     font-size: 18px;
     font-weight: 500;
     border-radius: 5px;
-    border: 2px solid #F77272;
-    background-color: #F77272;
+    border: 2px solid #2f4f4f;
+    background-color: #2f4f4f;
     color: #fff!important;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -133,8 +127,8 @@
     font-size: 18px;
     font-weight: 500;
     border-radius: 5px;
-    border: 2px solid #8AD1C8;
-    background-color: #8AD1C8;
+    border: 2px solid #6d8484;
+    background-color: #6d8484;
     color: #fff!important;
     text-transform: uppercase;
     letter-spacing: 2px;
