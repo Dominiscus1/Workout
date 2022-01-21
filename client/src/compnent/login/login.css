@@ -1,13 +1,13 @@
 .login-signup {
     color: white;
-    font-size: 150%;
+    font-size: 18px;
     display: flex;
     flex-direction: row;
     padding: 20px;
 }
 
 h2 {
-    font-size: 150%;
+    font-size: 24px;
     justify-content: center;
 }
 

@@ -1,12 +1,12 @@
 import './App.css'
 import React from 'react';
 import Navbar from './compnent/navbar/navbar';
-import Login from "./compnent/login/login"
+import Register from "./pages/Register.js"
 
 function App() {
   return <div>
       <Navbar />
-      <Login />
+      <Register />
   </div>;
 }
 
