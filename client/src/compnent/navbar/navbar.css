@@ -37,11 +37,12 @@ ul.sidebar.d__flex {
   height: 100%;
   position: fixed;
   right: 0%;
-  background: #010101;
+  background: #446161;
   justify-content: center;
   width: 300px;
   top: 0%;
   flex-direction: column;
+  font-size: large;
 }
 li.sideNavbar{
   padding: 25px 30px;
