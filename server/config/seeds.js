@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Workout, MuscleGroup} = require('../models');
+const { User, Workout, MuscleGroup, Exercise} = require('../models');
 
 db.once('open', async () => {
     await MuscleGroup.deleteMany();
@@ -22,9 +22,9 @@ db.once('open', async () => {
     ]);
     console.log("Muscle Group seeded");
 
-    await Workout.deleteMany();
+    await Exercise.deleteMany();
 
-    const workouts = await Workout.insertMany([
+    const Exercises = await Exercise.insertMany([
         { 
             name: 'Dumbbell Front Raises',
             video: 'https://www.youtube.com/watch?v=-t7fuZ0KhDA',
@@ -138,7 +138,9 @@ db.once('open', async () => {
             muscleGroup: muscleGroup[13]._id
         },
     ]);
-    console.log('workouts seeded');
+    console.log('Exercise seeded');
+
+    
 
     await User.deleteMany();
 
@@ -146,10 +148,35 @@ db.once('open', async () => {
         firstName: 'Nicole',
         lastName: 'Wrzosek',
         email: "nicole@email.com",
-        password: 'password123'
+        password: 'password123',
+        bmi: 25.24
     });
 
     console.log('users seeded')
+
+    await Workout.deleteMany();
+
+    await Workout.create({
+        name: 'Bicep Workout',
+        exercises: [
+            { 
+                name: 'Dumbbell Front Raises',
+                video: 'https://www.youtube.com/watch?v=-t7fuZ0KhDA',
+                reps: 8,
+                sets: 3,
+                rest: 30,
+                muscleGroup: muscleGroup[0]._id
+            },
+            { 
+                name: 'Bicep Curl',
+                video: 'https://www.youtube.com/watch?v=sAq_ocpRh_I',
+                reps: 12,
+                sets: 3,
+                rest: 30,
+                muscleGroup: muscleGroup[1]._id
+            }]
+    });
+    console.log("Workout Seeded");
 
 process.exit();
 });
