@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./navbar.css";
 import logo from "../../image/workoutLogo-c1caca.png";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   // fixed Header
@@ -18,29 +19,40 @@ function Navbar() {
         </div>
         <div className="navigation pxy__30">
           <ul className="navbar d__flex">
-            <a href="#Home">
-              <li className="nav__items mx__15">Home</li>
-            </a>
-            <a href="#Profile">
-              <li className="nav__items mx__15">Profile</li>
-            </a>
-            <a href="#Workout">
-              <li className="nav__items mx__15">Workout</li>
-            </a>
-            <a href="#Workout">
-              <li className="nav__items mx__15">Workout</li>
-            </a>
+            <li className="nav__items mx__15">
+              <NavLink className="nav-link" to="/Home">
+                Home
+              </NavLink>
+            </li>
+
+            <li className="nav__items mx__15">
+              <NavLink className="nav-link" to="/Profile">
+                Profile
+              </NavLink>
+            </li>
+
+            <li className="nav__items mx__15">
+              <NavLink className="nav-link" to="/Workout">
+                Workout
+              </NavLink>
+            </li>
+
+            <li className="nav__items mx__15">
+              <NavLink className="nav-link" to="/Register">
+                Login/Signup
+              </NavLink>
+            </li>
           </ul>
         </div>
         {/* Toogle Menu */}
-        <div className="toggle__menu">  
-        <svg
+        <div className="toggle__menu">
+          <svg
             onClick={() => setShow(!show)}
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-justify white pointer"
+            className="bi bi-justify white pointer"
             viewBox="0 0 16 16"
           >
             <path
@@ -51,19 +63,19 @@ function Navbar() {
         </div>
         {show ? (
           <div className="sideNavbar">
-            <ul className="navbar d__flex">
-              <a href="#Home">
-                <li className="nav__items mx__15">Home</li>
-              </a>
-              <a href="#Profile">
-                <li className="nav__items mx__15">Profile</li>
-              </a>
-              <a href="#Workout">
-                <li className="nav__items mx__15">Workout</li>
-              </a>
-              <a href="#Workout">
-                <li className="nav__items mx__15">Workout</li>
-              </a>
+            <ul className="sidebar d__flex">
+              <li className="sideNavbar">
+                <a href="#Home">Home</a>
+              </li>
+              <li className="sideNavbar">
+                <a href="#Profile">Profile</a>
+              </li>
+              <li className="sideNavbar">
+                <a href="#Workout">Workout</a>
+              </li>
+              <li className="sideNavbar">
+                <a href="#Sign">Signup/Signin</a>
+              </li>
             </ul>
           </div>
         ) : null}
