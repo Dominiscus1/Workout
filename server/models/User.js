@@ -25,7 +25,7 @@ const userSchema = new Schema({
     minlength: 5
   },
   bmi: {
-    type: NumberDecimal,
+    type: mongoose.Decimal128,
   },
   workouts: [Workout.schema]
 });
