@@ -24,7 +24,7 @@ db.once('open', async () => {
 
     await Exercise.deleteMany();
 
-    const Exercises = await Exercise.insertMany([
+    const exercises = await Exercise.insertMany([
         { 
             name: 'Dumbbell Front Raises',
             video: 'https://www.youtube.com/watch?v=-t7fuZ0KhDA',
@@ -32,6 +32,14 @@ db.once('open', async () => {
             sets: 3,
             rest: 30,
             muscleGroup: muscleGroup[0]._id
+        },
+        {
+            name: 'Hammer Curl',
+            video: 'https://www.youtube.com/watch?v=zC3nLlEvin4',
+            reps: 12,
+            sets: 3,
+            rest: 30,
+            muscleGroup: muscleGroup[1]._id
         },
         { 
             name: 'Bicep Curl',
@@ -140,32 +148,19 @@ db.once('open', async () => {
     ]);
     console.log('Exercise seeded');
 
-    
-
-    await User.deleteMany();
-
-    await User.create({
-        firstName: 'Nicole',
-        lastName: 'Wrzosek',
-        email: "nicole@email.com",
-        password: 'password123',
-        bmi: 25.24
-    });
-
-    console.log('users seeded')
 
     await Workout.deleteMany();
 
-    await Workout.create({
-        name: 'Bicep Workout',
+    const workouts = await Workout.insertMany([
+        {name: 'Bicep Workout', 
         exercises: [
             { 
-                name: 'Dumbbell Front Raises',
-                video: 'https://www.youtube.com/watch?v=-t7fuZ0KhDA',
-                reps: 8,
+                name: 'Hammer Curl',
+                video: 'https://www.youtube.com/watch?v=zC3nLlEvin4',
+                reps: 12,
                 sets: 3,
                 rest: 30,
-                 muscleGroup: muscleGroup[0]._id
+                muscleGroup: muscleGroup[1]._id
             },
             { 
                 name: 'Bicep Curl',
@@ -174,9 +169,33 @@ db.once('open', async () => {
                 sets: 3,
                 rest: 30,
                 muscleGroup: muscleGroup[1]._id
-            }]
-    });
+            }]},
+        {name: 'Tricep Workout',
+        exercises: [
+            {
+                name: 'Skull Crushers',
+                video: 'https://www.youtube.com/watch?v=d_KZxkY_0cM',
+                reps: 8,
+                sets: 3,
+                rest: 30,
+                muscleGroup: muscleGroup[8]._id
+            }
+        ]
+        }]);
     console.log("Workout Seeded");
+
+    await User.deleteMany();
+
+    await User.create({
+        firstName: 'Nicole',
+        lastName: 'Wrzosek',
+        email: "nicole@email.com",
+        password: 'password123',
+        bmi: 25.24,
+        workouts: [workouts[0], workouts[1]]
+    });
+
+    console.log('users seeded')
 
 process.exit();
 });
