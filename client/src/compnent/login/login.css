@@ -11,6 +11,12 @@ h2 {
     padding-bottom: 10px;
 }
 
+input {
+    width: 150%;
+    padding: 6px 10px;
+    margin: 5px 0px;
+}
+
 #login {
     padding: 10px;
 }
