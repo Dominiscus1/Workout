@@ -165,7 +165,7 @@ db.once('open', async () => {
                 reps: 8,
                 sets: 3,
                 rest: 30,
-                muscleGroup: muscleGroup[0]._id
+                 muscleGroup: muscleGroup[0]._id
             },
             { 
                 name: 'Bicep Curl',
