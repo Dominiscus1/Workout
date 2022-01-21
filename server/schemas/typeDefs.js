@@ -39,12 +39,14 @@ const typeDefs = gql`
     type Query {
         muscleGroups: [MuscleGroup]
         exercises(muscleGroup: ID, name: String): [Exercise]
-        exercise(_id: ID!): Exercise
-        user: User
+        userWorkouts: [User]
+        userWorkout(userId:ID): User
     }
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
     }
-`
+`;
+
+module.exports = typeDefs;

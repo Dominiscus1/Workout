@@ -24,9 +24,10 @@ const exerciseSchema = new Schema({
   rest: {
     type: Number,
   },
+  //muscleGroup ID
   muscleGroup: {
     type: Schema.Types.ObjectId,
-    ref: 'muscleGroup',
+    ref: 'MuscleGroup',
     required: true
   }
 });

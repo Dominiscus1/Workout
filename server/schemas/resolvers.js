@@ -7,24 +7,29 @@ const resolvers = {
     muscleGroups: async () => {
       return await MuscleGroup.find();
     },
-    exercises: async () => {
-      return await Exercise.find().populate('muscleGroup');
+    exercises: async (parent, args) => {
+      return await Exercise.find(
+        {
+          muscleGroup: args.muscleGroup
+        })
+      .populate('muscleGroup');
     },
-    // exercises: async (parent, { muscleGroup, name }) => {
-    //   const params = {};
-    //   if (muscleGroup) {
-    //     params.muscleGroup = muscleGroup;
-    //   }
-    //   if (name) {
-    //     params.name = {
-    //       $regex: name,
-    //     };
-    //   }
-    //   return await Exercise.find(params).populate("muscleGroup");
-    // },
-    // exercise: async (parent, { _id }) => {
-    //   return await Exercise.findById(_id).populate("muscleGroup");
-    // },
+    userWorkouts: async (parent, args) => {
+      return await User.find().populate({
+        path: 'workouts',
+        populate: 'exercises'
+      })
+    },
+    userWorkout: async (parent, args) => {
+      return await User.findOne({
+        _id: args.userId
+      })
+      .populate({
+        path: 'workouts',
+        populate: 'exercises'
+      })
+    },
+
     // user: async (parent, args, context) => {
     //   if (context.user) {
     //     const user = await User.findById(context.user._id).populate({
