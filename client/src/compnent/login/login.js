@@ -9,29 +9,34 @@ function Login () {
                 <form id= "login-form">
                     <div>
                         <label for="email">Email:   </label>
+                        <br/>
                         <input type="text" class="form-control" id="email-login" name="email"></input>
                     </div>
                     <div>
-                            <label for="password">Password: </label>
-                            <input type="text" class="form-control" id="password-login" name="password"></input>
+                        <label for="password">Password: </label>
+                        <br/>
+                        <input type="text" class="form-control" id="password-login" name="password"></input>
                     </div>
-                    <input type="submit" value="Submit"/>
+                    <button className="btn2 pointer" type="submit" value="Login" >Login</button>
                 </form> 
             </div>
             <div class= "Signup" id= "signup">
                 <h2>Sign Up</h2>
                 <form id= "signup-form">
                     <div>
-                        <label for="username">Username: </label>
-                        <input type="text" class="form-control" id="username-signup" name="username"></input>
+                        <label for="username">Name: </label>
+                        <br/>
+                        <input type="text" id="username-signup" name="username"></input>
                     </div>
                     <div>
                         <label for="email">Email:   </label>
-                        <input type="text" class="form-control" id="email-signup" name="email"></input>
+                        <br/>
+                        <input type="text" id="email-signup" name="email"></input>
                     </div>
                     <div>
                         <label for="password">Password: </label>
-                        <input type="text" class="form-control" id="password-signup" name="password"></input>
+                        <br/>
+                        <input type="text" id="password-signup" name="password"></input>
                     </div>
                     <input type="submit" value="Submit"/>
                 </form>
