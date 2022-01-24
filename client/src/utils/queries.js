@@ -7,11 +7,52 @@ export const QUERY_MUSCLEGROUPS = gql`
             name
         }
     }
-    `
+`
+export const QUERY_EXERCISES = gql`
+    {
+        exercises {
+            _id
+            name
+            reps
+            sets
+            rest
+            video
+            muscleGroup {
+                name
+            }
+        }
+    }
+`
+
+export const QUERY_ALL_USERS = gql`
+{
+    userWorkouts {
+        firstName
+        lastName
+        email
+        workout {
+            _id
+            name
+            exercises {
+                _id
+                name
+                video
+                reps
+                sets
+                rest
+                video
+                muscleGroup {
+                    name
+                }
+            }
+        }
+    }
+}
+`
 
 export const QUERY_ONE_USER = gql`
     {
-        user {
+        userWorkout {
             firstName
             lastName
             email
@@ -30,28 +71,6 @@ export const QUERY_ONE_USER = gql`
                         name
                     }
                 }
-            }
-        }
-    }
-`
-
-export const QUERY_ALL_USERS = gql`
-
-
-
-`
-
-export const QUERY_ALL_EXERCISES = gql`
-    {
-        exercises {
-            _id
-            name
-            reps
-            sets
-            rest
-            video
-            muscleGroup {
-                name
             }
         }
     }
