@@ -11,7 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 import { default as Navbar } from './compnent/navbar/navbar';
 import { default as Header } from './compnent/header/Header';
 import { default as Profile } from './compnent/profile/Profile';
-import { default as Login} from './compnent/login/login';
+import { default as Register} from './pages/Register';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
