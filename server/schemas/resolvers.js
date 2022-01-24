@@ -20,7 +20,7 @@ const resolvers = {
         populate: 'exercises'
       })
     },
-    userWorkout: async (parent, args) => {
+    userWorkout: async (parent, args, context) => {
       return await User.findOne({
         _id: args.userId
       })
@@ -29,7 +29,6 @@ const resolvers = {
         populate: 'exercises'
       })
     },
-
     // user: async (parent, args, context) => {
     //   if (context.user) {
     //     const user = await User.findById(context.user._id).populate({
@@ -37,21 +36,51 @@ const resolvers = {
     //       populate: "category",
     //     });
 
-    //     user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
     //     return user;
     //   }
 
     //   throw new AuthenticationError("Not logged in");
     // },
   },
-  // Mutation: {
-  //   addUser: async (parent, args) => {
-  //     const user = await User.create(args);
-  //     const token = signToken(user);
+  Mutation: {
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
 
-  //     return { token, user };
-  //   },
-  // }
+      return { token, user };
+    },
+    addWorkout: async (parent, { exercises }, context) => {
+      console.log(context.user);
+      if (context.user) {
+        const workout = new Workout({ exercises });
+
+        await User.findByIdAndUpdate(context.user._id, { $push: { workouts: workout } });
+
+        return workout;
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    login: async (parent, { email, password }, context) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+      
+      context.user = user;
+      console.log(context.user)
+
+      return { token, user };
+    }
+  }
 };
 module.exports = resolvers;
