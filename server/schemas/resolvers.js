@@ -20,28 +20,19 @@ const resolvers = {
         populate: 'exercises'
       })
     },
+
     userWorkout: async (parent, args, context) => {
-      return await User.findOne({
-        _id: args.userId
-      })
-      .populate({
-        path: 'workouts',
-        populate: 'exercises'
-      })
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path:'workouts',
+          populate: 'exercises'
+        });
+        return user;
+      }
+      throw new AuthenticationError("Not logged in");
     },
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user._id).populate({
-    //       path: "orders.products",
-    //       populate: "category",
-    //     });
-
-    //     return user;
-    //   }
-
-    //   throw new AuthenticationError("Not logged in");
-    // },
   },
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -50,7 +41,6 @@ const resolvers = {
       return { token, user };
     },
     addWorkout: async (parent, { exercises }, context) => {
-      console.log(context.user);
       if (context.user) {
         const workout = new Workout({ exercises });
 
@@ -77,7 +67,6 @@ const resolvers = {
       const token = signToken(user);
       
       context.user = user;
-      console.log(context.user)
 
       return { token, user };
     }
