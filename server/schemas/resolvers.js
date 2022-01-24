@@ -20,7 +20,7 @@ const resolvers = {
         populate: 'exercises'
       })
     },
-    userWorkout: async (parent, args) => {
+    userWorkout: async (parent, args, context) => {
       return await User.findOne({
         _id: args.userId
       })
@@ -50,7 +50,7 @@ const resolvers = {
       return { token, user };
     },
     addWorkout: async (parent, { exercises }, context) => {
-      console.log(context);
+      console.log(context.user);
       if (context.user) {
         const workout = new Workout({ exercises });
 
@@ -61,7 +61,7 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    login: async (parent, { email, password }) => {
+    login: async (parent, { email, password }, context) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -75,6 +75,9 @@ const resolvers = {
       }
 
       const token = signToken(user);
+      
+      context.user = user;
+      console.log(context.user)
 
       return { token, user };
     }
