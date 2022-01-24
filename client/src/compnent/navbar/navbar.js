@@ -20,7 +20,7 @@ function Navbar() {
         <div className="navigation pxy__30">
           <ul className="navbar d__flex">
             <li className="nav__items mx__15">
-              <NavLink className="nav-link" to="/Home">
+              <NavLink className="nav-link" to="/Header">
                 Home
               </NavLink>
             </li>
@@ -36,7 +36,7 @@ function Navbar() {
                 Workout
               </NavLink>
             </li>
-
+                  
             <li className="nav__items mx__15">
               <NavLink className="nav-link" to="/Register">
                 Login/Signup
