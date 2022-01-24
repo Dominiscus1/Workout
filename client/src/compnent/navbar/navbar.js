@@ -36,7 +36,7 @@ function Navbar() {
                 Workout
               </NavLink>
             </li>
-                  
+
             <li className="nav__items mx__15">
               <NavLink className="nav-link" to="/Register">
                 Login/Signup
@@ -65,16 +65,24 @@ function Navbar() {
           <div className="sideNavbar">
             <ul className="sidebar d__flex">
               <li className="sideNavbar">
-                <a href="#Home">Home</a>
+                <NavLink className="nav-link" to="/Header">
+                  Home
+                </NavLink>
               </li>
               <li className="sideNavbar">
-                <a href="#Profile">Profile</a>
+                <NavLink className="nav-link" to="/Profile">
+                  Profile
+                </NavLink>
               </li>
               <li className="sideNavbar">
-                <a href="#Workout">Workout</a>
+                <NavLink className="nav-link" to="/Workout">
+                  Workout
+                </NavLink>
               </li>
               <li className="sideNavbar">
-                <a href="#Sign">Signup/Signin</a>
+                <NavLink className="nav-link" to="/Register">
+                  Login/Signup
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -1,0 +1,26 @@
+.login-signup {
+    color: white;
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+h2 {
+    font-size: 32px;
+    padding-bottom: 10px;
+}
+
+input {
+    width: 150%;
+    padding: 6px 10px;
+    margin: 5px 0px;
+}
+
+#login {
+    padding: 10px;
+}
+
+#signup {
+    padding: 10px;
+}
