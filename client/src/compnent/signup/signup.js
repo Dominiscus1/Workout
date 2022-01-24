@@ -1,24 +1,25 @@
 import React, {useState} from "react";
-import "./login.css";
+import "./signup.css";
 import { useMutation } from "@apollo/client";
-import { LOGIN } from "../../utils/mutations";
+import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
-function Login(props) {
+function Signup(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error }] = useMutation(LOGIN);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
-      });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
-    } catch (e) {
-      console.log(e);
-    }
+    const mutationResponse = await addUser({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+        firstName: formState.firstName,
+        lastName: formState.lastName,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
   };
 
   const handleChange = (event) => {
@@ -30,11 +31,31 @@ function Login(props) {
   };
 
   return (
-    <div class="login-signup">
+    <div className="login-signup">
       <div className="row">
-        <div className=".col__2" id="login">
-          <h2>Log In</h2>
+        <div className=".col__2" id="signup">
+          <h2>Sign Up</h2>
           <form onSubmit={handleFormSubmit}>
+            <div>
+              <label for="firstName">First Name</label>
+              <br />
+              <input
+                type="firstName"
+                id="firstName"
+                name="firstName"
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div>
+              <label for="lastName">Last Name</label>
+              <br />
+              <input
+                type="lastName"
+                id="lastName"
+                name="lastName"
+                onChange={handleChange}
+              ></input>
+            </div>
             <div>
               <label for="email">Email</label>
               <br />
@@ -55,14 +76,9 @@ function Login(props) {
                 onChange={handleChange}
               ></input>
             </div>
-            {error ? (
-              <div>
-                <p className="error-text">Your login details are incorrect</p>
-              </div>
-            ) : null}
             <br />
             <button className="btn2 pointer" type="submit">
-              Login
+              Signup
             </button>
           </form>
         </div>
@@ -71,4 +87,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default Signup;
