@@ -27,7 +27,7 @@ db.once('open', async () => {
     const exercises = await Exercise.insertMany([
         { 
             name: 'Dumbbell Front Raises',
-            video: 'https://www.youtube.com/watch?v=-t7fuZ0KhDA',
+            video: 'https://www.youtube.com/embed/-t7fuZ0KhDA',
             reps: 8,
             sets: 3,
             rest: 30,
@@ -35,7 +35,7 @@ db.once('open', async () => {
         },
         {
             name: 'Hammer Curl',
-            video: 'https://www.youtube.com/watch?v=zC3nLlEvin4',
+            video: 'https://www.youtube.com/embed/zC3nLlEvin4',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -43,7 +43,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Bicep Curl',
-            video: 'https://www.youtube.com/watch?v=sAq_ocpRh_I',
+            video: 'https://www.youtube.com/embed/sAq_ocpRh_I',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -51,7 +51,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Russian Twists',
-            video: 'https://www.youtube.com/watch?v=wkD8rjkodUI',
+            video: 'https://www.youtube.com/embed/wkD8rjkodUI',
             reps: 20,
             sets: 5,
             rest: 30,
@@ -59,7 +59,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Leg Extensions',
-            video: 'https://www.youtube.com/watch?v=YyvSfVjQeL0',
+            video: 'https://www.youtube.com/embed/YyvSfVjQeL0',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -67,7 +67,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Chest Press',
-            video: 'https://www.youtube.com/watch?v=VmB1G1K7v94',
+            video: 'https://www.youtube.com/embed/VmB1G1K7v94',
             reps: 10,
             sets: 3,
             rest: 30,
@@ -75,7 +75,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Barbell Reverse Bicep Curl',
-            video: 'https://www.youtube.com/watch?v=nRgxYX2Ve9w',
+            video: 'https://www.youtube.com/embed/nRgxYX2Ve9w',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -83,7 +83,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Sit-Ups',
-            video: 'https://www.youtube.com/watch?v=1fbU_MkV7NE&ab_channel=LIVESTRONG.COM',
+            video: 'https://www.youtube.com/embed/1fbU_MkV7NE',
             reps: 30,
             sets: 3,
             rest: 30,
@@ -91,7 +91,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Dumbbell Shrugs',
-            video: 'https://www.youtube.com/watch?v=cJRVVxmytaM',
+            video: 'https://www.youtube.com/embed/cJRVVxmytaM',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -99,7 +99,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Skull Crushers',
-            video: 'https://www.youtube.com/watch?v=d_KZxkY_0cM',
+            video: 'https://www.youtube.com/embed/d_KZxkY_0cM',
             reps: 8,
             sets: 3,
             rest: 30,
@@ -107,15 +107,15 @@ db.once('open', async () => {
         },
         { 
             name: 'Deadlift',
-            video: 'https://www.youtube.com/watch?v=ytGaGIn3SjE',
+            video: 'https://www.youtube.com/embed/ytGaGIn3SjE',
             reps: 10,
             sets: 3,
             rest: 30,
             muscleGroup: muscleGroup[9]._id
         },
         { 
-            name: 'Leg Curl',
-            video: 'https://www.youtube.com/watch?v=ELOCsoDSmrg&ab_channel=ScottHermanFitness',
+            name: 'Seated Leg Curl',
+            video: 'https://www.youtube.com/embed/ELOCsoDSmrg',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -123,7 +123,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Seated Cable Row',
-            video: 'https://www.youtube.com/watch?v=GZbfZ033f74',
+            video: 'https://www.youtube.com/embed/GZbfZ033f74',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -131,7 +131,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Barbell Squat',
-            video: 'https://www.youtube.com/watch?v=SW_C1A-rejs',
+            video: 'https://www.youtube.com/embed/SW_C1A-rejs',
             reps: 10,
             sets: 3,
             rest: 30,
@@ -139,7 +139,7 @@ db.once('open', async () => {
         },
         { 
             name: 'Standing Calf Raises',
-            video: 'https://www.youtube.com/watch?v=YMmgqO8Jo-k&ab_channel=ScottHermanFitness',
+            video: 'https://www.youtube.com/embed/YMmgqO8Jo-k',
             reps: 12,
             sets: 3,
             rest: 30,
@@ -156,15 +156,15 @@ db.once('open', async () => {
         exercises: [
             { 
                 name: 'Hammer Curl',
-                video: 'https://www.youtube.com/watch?v=zC3nLlEvin4',
+                video: 'https://www.youtube.com/embed/zC3nLlEvin4',
                 reps: 12,
                 sets: 3,
                 rest: 30,
                 muscleGroup: muscleGroup[1]._id
             },
             { 
-                name: 'Bicep Curl',
-                video: 'https://www.youtube.com/watch?v=sAq_ocpRh_I',
+                name: 'Alternating Bicep Curl',
+                video: 'https://www.youtube.com/embed/sAq_ocpRh_I',
                 reps: 12,
                 sets: 3,
                 rest: 30,
@@ -174,7 +174,7 @@ db.once('open', async () => {
         exercises: [
             {
                 name: 'Skull Crushers',
-                video: 'https://www.youtube.com/watch?v=d_KZxkY_0cM',
+                video: 'https://www.youtube.com/embed/d_KZxkY_0cM',
                 reps: 8,
                 sets: 3,
                 rest: 30,

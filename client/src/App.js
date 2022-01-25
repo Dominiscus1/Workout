@@ -11,7 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 import { default as Navbar } from './compnent/navbar/navbar';
 import { default as Header } from './compnent/header/Header';
 import { default as Profile } from './compnent/profile/Profile';
-import { default as Workout} from './pages/Workout';
+import { default as Workout} from './compnent/workout/Workout.js';
 import { default as Register} from './pages/Register';
 
 const httpLink = createHttpLink({
