@@ -9,7 +9,7 @@ export const QUERY_MUSCLEGROUPS = gql`
     }
 `
 export const QUERY_EXERCISES = gql`
-    {
+    query getExercises($muscleGroup: ID) {
         exercises {
             _id
             name
