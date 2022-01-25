@@ -1,0 +1,12 @@
+.bmiButton{
+    background-color: #2f4f4f;
+}
+
+.bmiButton:hover {
+    background-color: #c1caca;
+}
+
+.bmi__container{
+    border-radius: 10px;
+    width: 100%;
+}

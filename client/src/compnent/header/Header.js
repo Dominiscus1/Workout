@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import homepageImg from "../../image/homepageImg.jpg";
 
-function Header() {
+function Home() {
   return (
     <div className="About component__space" id="About">
       <div className="container">
@@ -30,4 +30,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Home;
