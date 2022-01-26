@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
@@ -34,14 +34,16 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [exercises, setExercises] = useState([]);
+  
   return (
     <ApolloProvider client={client}>
       <Router>
         <Navbar />
         <Switch>
           <Route exact path="/" component={Header} />
-          <Route path="/Profile" exact component={() => <Profile />} />
-          <Route path="/Workout" exact component={() => <Workout />} />
+          <Route path="/Profile" exact component={() => <Profile exercises={exercises} />} />
+          <Route path="/Workout" exact component={() => <Workout setExercises={setExercises} exercises={exercises}/>} />
           <Route path="/Register" exact component={() => <Register />} />
         </Switch>
       </Router>
