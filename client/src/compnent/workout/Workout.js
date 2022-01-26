@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Workout.css";
-import WorkoutCard from "./WorkoutCard";
+import WorkoutCard from "./workoutCard";
 import { QUERY_EXERCISES, QUERY_MUSCLEGROUPS } from "../../utils/queries";
 import { useQuery, useLazyQuery } from "@apollo/client";
 
@@ -51,7 +51,6 @@ function Workout() {
 
     <main className="px__30">
 
-    <main>
 
       {console.log(muscleGroups)}
       <select
