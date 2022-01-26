@@ -33,6 +33,22 @@ db.once('open', async () => {
             rest: 30,
             muscleGroup: muscleGroup[0]._id
         },
+        { 
+            name: 'Arnold Press (Anterior)',
+            video: 'https://www.youtube.com/embed/3ml7BH7mNwQ',
+            reps: 10,
+            sets: 3,
+            rest: 30,
+            muscleGroup: muscleGroup[0]._id
+        },
+        { 
+            name: 'Dumbbell Side Raise (Lateral)',
+            video: 'https://www.youtube.com/embed/3VcKaXpzqRo',
+            reps: 10,
+            sets: 3,
+            rest: 30,
+            muscleGroup: muscleGroup[0]._id
+        },
         {
             name: 'Hammer Curl',
             video: 'https://www.youtube.com/embed/zC3nLlEvin4',
