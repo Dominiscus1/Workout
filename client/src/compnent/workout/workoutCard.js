@@ -1,5 +1,4 @@
 import React from "react";
-
 const WorkoutCard = ({ _id, name, video, reps, sets, rest }) => {
   console.log("WorkoutCard");
 
@@ -19,10 +18,19 @@ const WorkoutCard = ({ _id, name, video, reps, sets, rest }) => {
               title="Embedded youtube"
             />
           </div>
-          <span style={{ fontSize: "1rem" }}>{reps}</span>
-          <span style={{ fontSize: "1rem" }}>{sets}</span>
-          <span style={{ fontSize: "1rem" }}>{rest}</span>
-        </h4>
+          <span style={{ fontSize: "1rem" }}>Reps: <input
+            type="number"
+            placeholder={reps} 
+          /></span>
+          <span style={{ fontSize: "1rem" }}>Sets: <input
+            type="number"
+            placeholder={sets} 
+          /></span>
+          <span style={{ fontSize: "1rem" }}>Rest: <input
+            type="number"
+            placeholder={rest} 
+          /> Minutes</span>
+        </h1>
       </div>
     </div>
   );

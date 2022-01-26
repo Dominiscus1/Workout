@@ -26,10 +26,7 @@ function Workout() {
   const [muscleGroup, setMuscleGroup] = useState();
 
   const muscleGroups = muscleGroupData?.muscleGroups;
-
   
-
-
   useEffect(() => {
     console.log(`useEfect - muscleGroup: ${muscleGroup}`);
     //  get muscleGroup Id
@@ -51,13 +48,19 @@ function Workout() {
   }
 
   return (
+
+    <main className="px__30">
+
     <main>
+
       {console.log(muscleGroups)}
       <select
         onChange={(e) => setMuscleGroup(e.target.value)}
         value={muscleGroup}
       >
-        <option>Choose muscle group...</option>
+
+        <option value="">Choose Muscle Group...</option>
+
         {muscleGroups.map((group) => (
           <option key={group._id} value={group.name}>
             {group.name}
@@ -65,11 +68,13 @@ function Workout() {
         ))}
       </select>
 
-      <div className="flex-row justify-center">
+
+      <div className="d__flex row justify__content__center">
         <div className="col-12 col-md-8 mb-3">
-          <div className="d__flex-row">
+          <div className="d__flex row">
             {!data ? (
-              <div>loading Exercises ...</div>
+              <div className="loadingText">Loading Exercises ...</div>
+
             ) : (
               data.exercises.map((exercise) => {
                 console.log(exercise);
