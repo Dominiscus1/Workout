@@ -17,7 +17,7 @@ function submitWorkout(exercise){
 }
 
 function Workout() {
-  console.log("Workout");
+  // console.log("Workout");
 
   const { loading, data: muscleGroupData } = useQuery(QUERY_MUSCLEGROUPS);
 
@@ -26,15 +26,15 @@ function Workout() {
   const [muscleGroup, setMuscleGroup] = useState();
 
   const muscleGroups = muscleGroupData?.muscleGroups;
-  
+
   useEffect(() => {
-    console.log(`useEfect - muscleGroup: ${muscleGroup}`);
+    // console.log(`useEfect - muscleGroup: ${muscleGroup}`);
     //  get muscleGroup Id
     if (muscleGroup) {
-      const group = muscleGroups.filter( group => group.name === muscleGroup);
-      console.log(`useEffect - group: ${JSON.stringify(group)} `)
-      console.log(`useEffect - group[0]: ${JSON.stringify(group[0])} `);
-      console.log(`useEffect - group[0]._id: ${JSON.stringify(group[0]._id)} `);
+      const group = muscleGroups.filter((group) => group.name === muscleGroup);
+      // console.log(`useEffect - group: ${JSON.stringify(group)} `);
+      // console.log(`useEffect - group[0]: ${JSON.stringify(group[0])} `);
+      // console.log(`useEffect - group[0]._id: ${JSON.stringify(group[0]._id)} `);
       // const groupId = group[0]._id;
 
       getExercises({
@@ -44,20 +44,16 @@ function Workout() {
   }, [muscleGroup, muscleGroups, getExercises]);
 
   if (loading) {
-    return <div>loading ...</div>
+    return <div>loading ...</div>;
   }
 
   return (
-
     <main className="px__30">
-
-
-      {console.log(muscleGroups)}
+      {/* {console.log(muscleGroups)} */}
       <select
         onChange={(e) => setMuscleGroup(e.target.value)}
         value={muscleGroup}
       >
-
         <option value="">Choose Muscle Group...</option>
 
         {muscleGroups.map((group) => (
@@ -67,16 +63,14 @@ function Workout() {
         ))}
       </select>
 
-
       <div className="d__flex row justify__content__center">
         <div className="col-12 col-md-8 mb-3">
           <div className="d__flex row">
             {!data ? (
               <div className="loadingText">Loading Exercises ...</div>
-
             ) : (
               data.exercises.map((exercise) => {
-                console.log(exercise);
+                // console.log(exercise);
                 return (
                   <WorkoutCard
                   key={exercise._id}

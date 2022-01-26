@@ -1,6 +1,7 @@
 import React from "react";
 import './Profile.css'
 import BMI_calculator from "../bmi_calculator/bmi.js";
+import SavedWorkouts from "../saved_workouts/SavedWorkouts";
 
 function Profile() {
   return (
@@ -13,8 +14,9 @@ function Profile() {
                 
                   <h1 className="userBox">Your Workouts</h1>
                   <div className="saved__workouts">
-                    
-                  </div>   
+                    <SavedWorkouts/>
+                  </div>
+                
               </div>
               <div className="col__2">
                 <BMI_calculator />
