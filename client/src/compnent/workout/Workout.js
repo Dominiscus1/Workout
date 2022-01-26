@@ -38,8 +38,6 @@ function Workout() {
 
     <main className="px__30">
 
-    <main>
-
       {console.log(muscleGroups)}
       <select
         onChange={(e) => setMuscleGroup(e.target.value)}
