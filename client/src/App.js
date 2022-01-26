@@ -39,7 +39,7 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/Header" exact component={() => <Header />} />
+          <Route exact path="/" component={Header} />
           <Route path="/Profile" exact component={() => <Profile />} />
           <Route path="/Workout" exact component={() => <Workout />} />
           <Route path="/Register" exact component={() => <Register />} />
