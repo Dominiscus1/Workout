@@ -37,6 +37,10 @@ export const ADD_WORKOUT = gql`
         addWorkout(name:$name, exercises:$exercises){
             _id
             name
+            video
+            reps
+            sets
+            rest
         }
     }
 `
