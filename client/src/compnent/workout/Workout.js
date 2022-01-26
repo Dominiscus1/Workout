@@ -3,7 +3,6 @@ import "./Workout.css";
 import WorkoutCard from "./WorkoutCard";
 import { QUERY_EXERCISES, QUERY_MUSCLEGROUPS } from "../../utils/queries";
 import { useQuery, useLazyQuery } from "@apollo/client";
-
 function Workout() {
   console.log("Workout");
 
@@ -14,7 +13,7 @@ function Workout() {
   const [muscleGroup, setMuscleGroup] = useState();
 
   const muscleGroups = muscleGroupData?.muscleGroups;
-
+  
   useEffect(() => {
     console.log(`useEfect - muscleGroup: ${muscleGroup}`);
     //  get muscleGroup Id
@@ -36,13 +35,19 @@ function Workout() {
   }
 
   return (
+
     <main className="px__30">
+
+    <main>
+
       {console.log(muscleGroups)}
       <select
         onChange={(e) => setMuscleGroup(e.target.value)}
         value={muscleGroup}
       >
+
         <option value="">Choose Muscle Group...</option>
+
         {muscleGroups.map((group) => (
           <option key={group._id} value={group.name}>
             {group.name}
@@ -50,11 +55,13 @@ function Workout() {
         ))}
       </select>
 
+
       <div className="d__flex row justify__content__center">
         <div className="col-12 col-md-8 mb-3">
           <div className="d__flex row">
             {!data ? (
               <div className="loadingText">Loading Exercises ...</div>
+
             ) : (
               data.exercises.map((exercise) => {
                 console.log(exercise);
