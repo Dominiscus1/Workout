@@ -1,18 +1,16 @@
 import React from "react";
-
-
 const WorkoutCard = ({ _id, name, video, reps, sets, rest }) => {
   console.log("WorkoutCard");
 
   return (
     <div>
-      <div className="card mx__15">
-        <h1 className="card-header px__30 ">
+      <div className="card mb-3">
+        <h4 className="card-header bg-primary text-light p-2 m-0">
           {name} <br />
           <div className="video-responsive">
             <iframe
-              width="350"
-              height="250"
+              width="853"
+              height="480"
               src={video}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

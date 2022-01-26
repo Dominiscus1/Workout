@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./navbar.css";
+import Login from "./login"
 import logo from "../../image/workoutLogo-c1caca.png";
 import { NavLink } from "react-router-dom";
 
@@ -38,9 +39,7 @@ function Navbar() {
             </li>
 
             <li className="nav__items mx__15">
-              <NavLink className="nav-link" to="/Register">
-                Login/Signup
-              </NavLink>
+              <Login />
             </li>
           </ul>
         </div>
