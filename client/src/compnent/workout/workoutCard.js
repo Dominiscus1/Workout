@@ -3,10 +3,8 @@ import { useMutation } from "@apollo/client";
 import { ADD_WORKOUT } from "../../utils/mutations";
 import Auth from '../../utils/auth'
 
-const WorkoutCard = ({ _id, name, video, reps, sets, rest }) => {
+const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, rest }) => {
   // console.log("WorkoutCard");
-
-  const [exercises, setExercises] = useState([]);
 
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 

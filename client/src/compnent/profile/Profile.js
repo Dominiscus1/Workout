@@ -3,7 +3,7 @@ import './Profile.css'
 import BMI_calculator from "../bmi_calculator/bmi.js";
 import SavedWorkouts from "../saved_workouts/SavedWorkouts";
 
-function Profile() {
+function Profile(props) {
   return (
     <div>
       <div className="bg-container">
@@ -14,7 +14,8 @@ function Profile() {
                 
                   <h1 className="userBox">Your Workouts</h1>
                   <div className="saved__workouts">
-                    <SavedWorkouts/>
+                    <SavedWorkouts exercises={props.exercises}
+                   />
                   </div>
                 
               </div>

@@ -4,8 +4,6 @@ import WorkoutCard from "./workoutCard";
 import { QUERY_EXERCISES, QUERY_MUSCLEGROUPS } from "../../utils/queries";
 import { useQuery, useLazyQuery } from "@apollo/client";
 
-
-
 function submitWorkout(exercise){
   // const state = useSelector((state) => state);
   const exerciseIds = [];
@@ -16,7 +14,7 @@ function submitWorkout(exercise){
   })
 }
 
-function Workout() {
+function Workout(props) {
   // console.log("Workout");
 
   const { loading, data: muscleGroupData } = useQuery(QUERY_MUSCLEGROUPS);
@@ -72,7 +70,7 @@ function Workout() {
               data.exercises.map((exercise) => {
                 // console.log(exercise);
                 return (
-                  <WorkoutCard
+                  <WorkoutCard setExercises= {props.setExercises} exercises={props.exercises}
                   key={exercise._id}
                   _id={exercise._id}
                   name={exercise.name}

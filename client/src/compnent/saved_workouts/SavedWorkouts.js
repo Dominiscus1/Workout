@@ -1,7 +1,7 @@
 import React from 'react';
 
-const SavedWorkouts = ({ _id, name, video, reps, sets, rest }) => {
-    console.log("savedWorkouts")
+const SavedWorkouts = ({exercises, _id, name, video, reps, sets, rest }) => {
+    console.log(exercises)
 
 
 
