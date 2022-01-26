@@ -1,217 +1,717 @@
-const db = require('./connection');
-const { User, Workout, MuscleGroup, Exercise} = require('../models');
+const db = require("./connection");
+const { User, Workout, MuscleGroup, Exercise } = require("../models");
 
-db.once('open', async () => {
-    await MuscleGroup.deleteMany();
-  
-    const muscleGroup = await MuscleGroup.insertMany([
-      { name: 'Deltoid' },
-      { name: 'Biceps' },
-      { name: 'Side Abs' },
-      { name: 'Quadriceps' },
-      { name: 'Chest' },
-      { name: 'Forearms' },
-      { name: 'Abdominals' },
-      { name: 'Upper Back' },
-      { name: 'Triceps' },
-      { name: 'Lower Back' },
-      { name: 'Hamstring Group' },
-      { name: 'Middle back' },
-      { name: 'Gluteus Maximus' },
-      { name: 'Calf' }
-    ]);
-    console.log("Muscle Group seeded");
+db.once("open", async () => {
+  await MuscleGroup.deleteMany();
 
-    await Exercise.deleteMany();
+  const muscleGroup = await MuscleGroup.insertMany([
+    { name: "Deltoid" },
+    { name: "Biceps" },
+    { name: "Side Abs" },
+    { name: "Quadriceps" },
+    { name: "Chest" },
+    { name: "Forearms" },
+    { name: "Abdominals" },
+    { name: "Upper Back" },
+    { name: "Triceps" },
+    { name: "Lower Back" },
+    { name: "Hamstring" },
+    { name: "Middle back" },
+    { name: "Gluteus" },
+    { name: "Calf" },
+  ]);
+  console.log("Muscle Group seeded");
 
-    const exercises = await Exercise.insertMany([
-        { 
-            name: 'Dumbbell Front Raises',
-            video: 'https://www.youtube.com/embed/-t7fuZ0KhDA',
-            reps: 8,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[0]._id
-        },
-        { 
-            name: 'Arnold Press (Anterior)',
-            video: 'https://www.youtube.com/embed/3ml7BH7mNwQ',
-            reps: 10,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[0]._id
-        },
-        { 
-            name: 'Dumbbell Side Raise (Lateral)',
-            video: 'https://www.youtube.com/embed/3VcKaXpzqRo',
-            reps: 10,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[0]._id
+  await Exercise.deleteMany();
+
+  const exercises = await Exercise.insertMany([
+    {
+      name: "Dumbbell Front Raises",
+      video: "https://www.youtube.com/embed/-t7fuZ0KhDA",
+      reps: 8,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[0]._id,
+    },
+    {
+      name: "Arnold Press (Anterior)",
+      video: "https://www.youtube.com/embed/3ml7BH7mNwQ",
+      reps: 10,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[0]._id,
+    },
+    {
+      name: "Dumbbell Side Raise (Lateral)",
+      video: "https://www.youtube.com/embed/3VcKaXpzqRo",
+      reps: 10,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[0]._id,
+    },
+    {
+      name: "Shoulder Press",
+      video: "https://www.youtube.com/embed/qEwKCR5JCog",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[0]._id,
+    },
+    {
+      name: "Lateral Raise",
+      video: "https://www.youtube.com/embed/3VcKaXpzqRo",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[0]._id,
+    },
+    {
+      name: "Front Raise",
+      video: "https://www.youtube.com/embed/-t7fuZ0KhDA",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[0]._id,
+    },
+    {
+      name: "Bent Over Lateral Raise",
+      video: "https://www.youtube.com/embed/ttvfGg9d76c",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[0]._id,
+    },
+    {
+      name: "Hammer Curl",
+      video: "https://www.youtube.com/embed/zC3nLlEvin4",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[1]._id,
+    },
+    {
+      name: "Bicep Curl",
+      video: "https://www.youtube.com/embed/sAq_ocpRh_I",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[1]._id,
+    },
+    {
+      name: "Concentration Curls",
+      video: "https://www.youtube.com/embed/Jvj2wV0vOYU",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[1]._id,
+    },
+    {
+      name: "Chin Ups",
+      video: "https://www.youtube.com/embed/mRy9m2Q9_1I",
+      reps: 8,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[1]._id,
+    },
+    {
+      name: "Incline Dumbbell Curl",
+      video: "https://www.youtube.com/embed/soxrZlIl35U",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[1]._id,
+    },
+    {
+      name: "Preacher Curl",
+      video: "https://www.youtube.com/embed/fIWP-FRFNU0",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[1]._id,
+    },
+    {
+      name: "Russian Twists",
+      video: "https://www.youtube.com/embed/wkD8rjkodUI",
+      reps: 20,
+      sets: 5,
+      rest: 30,
+      muscleGroup: muscleGroup[2]._id,
+    },
+    {
+      name: "Side Planks",
+      video: "https://www.youtube.com/embed/NXr4Fw8q60o",
+      reps: 20,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[2]._id,
+    },
+    {
+      name: "Side Plank Dips",
+      video: "https://www.youtube.com/embed/BWQRVB4LyFI",
+      reps: 20,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[2]._id,
+    },
+    {
+      name: "Situp Twist",
+      video: "https://www.youtube.com/embed/9C1yGA0Il-o",
+      reps: 20,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[2]._id,
+    },
+    {
+      name: "Spidermans",
+      video: "https://www.youtube.com/embed/HVyHcalg61g",
+      reps: 20,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[2]._id,
+    },
+    {
+      name: "Wood Choppers",
+      video: "https://www.youtube.com/embed/pAplQXk3dkU",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[2]._id,
+    },
+    {
+      name: "Leg Extensions",
+      video: "https://www.youtube.com/embed/YyvSfVjQeL0",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[3]._id,
+    },
+    {
+      name: "Leg Press",
+      video: "https://www.youtube.com/embed/IZxyjW7MPJQ",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[3]._id,
+    },
+    {
+      name: "Barbell Squat",
+      video: "https://www.youtube.com/embed/SW_C1A-rejs",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[3]._id,
+    },
+    {
+      name: "Barbell Lunges",
+      video: "https://www.youtube.com/embed/0_9sJd9P8M0",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[3]._id,
+    },
+    {
+      name: "Goblet Squats",
+      video: "https://www.youtube.com/embed/MeIiIdhvXT4",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[3]._id,
+    },
+    {
+      name: "Dumbbell Lateral Lunges",
+      video: "https://www.youtube.com/embed/ktdMS7WBwck",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[3]._id,
+    },
+    {
+      name: "Chest Press",
+      video: "https://www.youtube.com/embed/VmB1G1K7v94",
+      reps: 10,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[4]._id,
+    },
+    {
+      name: "Barbell Bench Press",
+      video: "https://www.youtube.com/embed/rT7DgCr-3pg",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[4]._id,
+    },
+    {
+      name: "Flat Dumbbell Fly",
+      video: "https://www.youtube.com/embed/eozdVDA78K0",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[4]._id,
+    },
+    {
+      name: "Weighted Dips",
+      video: "https://www.youtube.com/embed/2i3o0bFZT_s",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[4]._id,
+    },
+    {
+      name: "Push-Ups",
+      video: "https://www.youtube.com/embed/IODxDxX7oi4",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[4]._id,
+    },
+    {
+      name: "Dumbbell Pullover",
+      video: "https://www.youtube.com/embed/5YStMv6m2g8",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[4]._id,
+    },
+    {
+      name: "Barbell Reverse Bicep Curl",
+      video: "https://www.youtube.com/embed/nRgxYX2Ve9w",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[5]._id,
+    },
+    {
+      name: "Farmers Walk",
+      video: "https://www.youtube.com/embed/Fkzk_RqlYig",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[5]._id,
+    },
+    {
+      name: "Towel Pullup",
+      video: "https://www.youtube.com/embed/Z6o1sy-sw_I",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[5]._id,
+    },
+    {
+      name: "Dumbbell Wrist Extension",
+      video: "https://www.youtube.com/embed/u61QWKYgbxI",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[5]._id,
+    },
+    {
+      name: "Zottman Curl",
+      video: "https://www.youtube.com/embed/ZrpRBgswtHs",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[5]._id,
+    },
+    {
+      name: "Behind-the-Back Cable Curl",
+      video: "https://www.youtube.com/embed/Df0GjCkUh90",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[5]._id,
+    },
+    {
+      name: "Sit-Ups",
+      video: "https://www.youtube.com/embed/1fbU_MkV7NE",
+      reps: 30,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[6]._id,
+    },
+    {
+      name: "Mountain Climbers",
+      video: "https://www.youtube.com/embed/nmwgirgXLYM",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[6]._id,
+    },
+    {
+      name: "Medicine Ball V-Up",
+      video: "https://www.youtube.com/embed/7MY2agzydDw",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[6]._id,
+    },
+    {
+      name: "High Knees",
+      video: "https://www.youtube.com/embed/oDdkytliOqE",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[6]._id,
+    },
+    {
+      name: "Crunches",
+      video: "https://www.youtube.com/embed/Xyd_fa5zoEU",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[6]._id,
+    },
+    {
+      name: "Bicycle Crunches",
+      video: "https://www.youtube.com/embed/Iwyvozckjak",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[6]._id,
+    },
+    {
+      name: "Dumbbell Shrugs",
+      video: "https://www.youtube.com/embed/cJRVVxmytaM",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[7]._id,
+    },
+    {
+      name: "Bent-Over Lateral Raises",
+      video: "https://www.youtube.com/embed/ttvfGg9d76c",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[7]._id,
+    },
+    {
+      name: "Back Extensions",
+      video: "https://www.youtube.com/embed/ph3pddpKzzw",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[7]._id,
+    },
+    {
+      name: "Close Grip Lat Pulldowns",
+      video: "https://www.youtube.com/embed/ecRF8ERf2q4",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[7]._id,
+    },
+    {
+      name: "Wide Grip Lat Pulldowns",
+      video: "https://www.youtube.com/embed/lueEJGjTuPQ",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[7]._id,
+    },
+    {
+      name: "Stiff Legged Barbell Deadlifts",
+      video: "https://www.youtube.com/embed/1uDiW5--rAE",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[7]._id,
+    },
+    {
+      name: "Skull Crushers",
+      video: "https://www.youtube.com/embed/d_KZxkY_0cM",
+      reps: 8,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[8]._id,
+    },
+    {
+      name: "Reverse Push-Downs",
+      video: "https://www.youtube.com/embed/kuSFFIY4MpU",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[8]._id,
+    },
+    {
+      name: "Overhead Cable",
+      video: "https://www.youtube.com/embed/ns-RGsbzqok",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[8]._id,
+    },
+    {
+      name: "Tricep Dips",
+      video: "https://www.youtube.com/embed/sM6XUdt1rm4",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[8]._id,
+    },
+    {
+      name: "Push-Downs",
+      video: "https://www.youtube.com/embed/2-LAMcpzODU",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[8]._id,
+    },
+    {
+      name: "Dumbbell Extensions",
+      video: "https://www.youtube.com/embed/YbX7Wd8jQ-Q",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[8]._id,
+    },
+    {
+      name: "Deadlift",
+      video: "https://www.youtube.com/embed/ytGaGIn3SjE",
+      reps: 10,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[9]._id,
+    },
+    {
+      name: "Hyperextentions",
+      video: "https://www.youtube.com/embed/qtjJUWCnDyE",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[9]._id,
+    },
+    {
+      name: "Rackpulls",
+      video: "https://www.youtube.com/embed/u7NE34Vw81w",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[9]._id,
+    },
+    {
+      name: "Seated Leg Curl",
+      video: "https://www.youtube.com/embed/ELOCsoDSmrg",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[10]._id,
+    },
+    {
+      name: "Romanian Deadlift",
+      video: "https://www.youtube.com/embed/JCXUYuzwNrM",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[10]._id,
+    },
+    {
+      name: "Kettlebell Swings",
+      video: "https://www.youtube.com/embed/YSxHifyI6s8",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[10]._id,
+    },
+    {
+      name: "Single-Leg Deadlift",
+      video: "https://www.youtube.com/embed/DGavj41F_Cs",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[10]._id,
+    },
+    {
+      name: "Glute Bridge",
+      video: "https://www.youtube.com/embed/ylpfCk3i-0Y",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[10]._id,
+    },
+    {
+      name: "Hip Thrusts",
+      video: "https://www.youtube.com/embed/SEdqd1n0cvg",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[10]._id,
+    },
+    {
+      name: "Seated Cable Row",
+      video: "https://www.youtube.com/embed/GZbfZ033f74",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[11]._id,
+    },
+    {
+      name: "Barbell Rows",
+      video: "https://www.youtube.com/embed/9efgcAjQe7E",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[11]._id,
+    },
+    {
+      name: "T-Bar Rows",
+      video: "https://www.youtube.com/embed/j3Igk5nyZE4",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[11]._id,
+    },
+    {
+      name: "Pull Ups",
+      video: "https://www.youtube.com/embed/eGo4IYlbE5g",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[11]._id,
+    },
+    {
+      name: "Incline Barbell Row",
+      video: "https://www.youtube.com/embed/2LxN3_3atps",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[11]._id,
+    },
+    {
+      name: "Barbell Squat",
+      video: "https://www.youtube.com/embed/SW_C1A-rejs",
+      reps: 10,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[12]._id,
+    },
+    {
+      name: "Reverse Lunge",
+      video: "https://www.youtube.com/embed/7pwO2gemRyg",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[12]._id,
+    },
+    {
+      name: "Bulgarian Split Squat",
+      video: "https://www.youtube.com/embed/2C-uNgKwPLE",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[12]._id,
+    },
+    {
+      name: "Sumo Romanian Deadlift",
+      video: "https://www.youtube.com/embed/nb-3H1dStfU",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[12]._id,
+    },
+    {
+      name: "Barbell Glute Bridge",
+      video: "https://www.youtube.com/embed/ylpfCk3i-0Y",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[12]._id,
+    },
+    {
+      name: "Single-Leg Glute Bridge",
+      video: "https://www.youtube.com/embed/_K_di6h2-Wg",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[12]._id,
+    },
+    {
+      name: "Standing Calf Raises",
+      video: "https://www.youtube.com/embed/YMmgqO8Jo-k",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[13]._id,
+    },
+    {
+      name: "Seated Calf Raise",
+      video: "https://www.youtube.com/embed/JbyjNymZOt0",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[13]._id,
+    },
+    {
+      name: "Single-Leg Calf Raise",
+      video: "https://www.youtube.com/embed/ORT4oJ_R8Qs",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[13]._id,
+    },
+    {
+      name: "Bosu Ball Squat",
+      video: "https://www.youtube.com/embed/3tpdgI1RZig",
+      reps: 12,
+      sets: 3,
+      rest: 30,
+      muscleGroup: muscleGroup[13]._id,
+    },
+  ]);
+  console.log("Exercise seeded");
+
+  await Workout.deleteMany();
+
+  const workouts = await Workout.insertMany([
+    {
+      name: "Bicep Workout",
+      exercises: [
+        {
+          name: "Hammer Curl",
+          video: "https://www.youtube.com/embed/zC3nLlEvin4",
+          reps: 12,
+          sets: 3,
+          rest: 30,
+          muscleGroup: muscleGroup[1]._id,
         },
         {
-            name: 'Hammer Curl',
-            video: 'https://www.youtube.com/embed/zC3nLlEvin4',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[1]._id
+          name: "Alternating Bicep Curl",
+          video: "https://www.youtube.com/embed/sAq_ocpRh_I",
+          reps: 12,
+          sets: 3,
+          rest: 30,
+          muscleGroup: muscleGroup[1]._id,
         },
-        { 
-            name: 'Bicep Curl',
-            video: 'https://www.youtube.com/embed/sAq_ocpRh_I',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[1]._id
+      ],
+    },
+    {
+      name: "Tricep Workout",
+      exercises: [
+        {
+          name: "Skull Crushers",
+          video: "https://www.youtube.com/embed/d_KZxkY_0cM",
+          reps: 8,
+          sets: 3,
+          rest: 30,
+          muscleGroup: muscleGroup[8]._id,
         },
-        { 
-            name: 'Russian Twists',
-            video: 'https://www.youtube.com/embed/wkD8rjkodUI',
-            reps: 20,
-            sets: 5,
-            rest: 30,
-            muscleGroup: muscleGroup[2]._id
-        },
-        { 
-            name: 'Leg Extensions',
-            video: 'https://www.youtube.com/embed/YyvSfVjQeL0',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[3]._id
-        },
-        { 
-            name: 'Chest Press',
-            video: 'https://www.youtube.com/embed/VmB1G1K7v94',
-            reps: 10,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[4]._id
-        },
-        { 
-            name: 'Barbell Reverse Bicep Curl',
-            video: 'https://www.youtube.com/embed/nRgxYX2Ve9w',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[5]._id
-        },
-        { 
-            name: 'Sit-Ups',
-            video: 'https://www.youtube.com/embed/1fbU_MkV7NE',
-            reps: 30,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[6]._id
-        },
-        { 
-            name: 'Dumbbell Shrugs',
-            video: 'https://www.youtube.com/embed/cJRVVxmytaM',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[7]._id
-        },
-        { 
-            name: 'Skull Crushers',
-            video: 'https://www.youtube.com/embed/d_KZxkY_0cM',
-            reps: 8,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[8]._id
-        },
-        { 
-            name: 'Deadlift',
-            video: 'https://www.youtube.com/embed/ytGaGIn3SjE',
-            reps: 10,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[9]._id
-        },
-        { 
-            name: 'Seated Leg Curl',
-            video: 'https://www.youtube.com/embed/ELOCsoDSmrg',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[10]._id
-        },
-        { 
-            name: 'Seated Cable Row',
-            video: 'https://www.youtube.com/embed/GZbfZ033f74',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[11]._id
-        },
-        { 
-            name: 'Barbell Squat',
-            video: 'https://www.youtube.com/embed/SW_C1A-rejs',
-            reps: 10,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[12]._id
-        },
-        { 
-            name: 'Standing Calf Raises',
-            video: 'https://www.youtube.com/embed/YMmgqO8Jo-k',
-            reps: 12,
-            sets: 3,
-            rest: 30,
-            muscleGroup: muscleGroup[13]._id
-        },
-    ]);
-    console.log('Exercise seeded');
+      ],
+    },
+  ]);
+  console.log("Workout Seeded");
 
+  await User.deleteMany();
 
-    await Workout.deleteMany();
+  await User.create({
+    firstName: "Nicole",
+    lastName: "Wrzosek",
+    email: "nicole@email.com",
+    password: "password123",
+    bmi: 25.24,
+    workouts: [workouts[0], workouts[1]],
+  });
 
-    const workouts = await Workout.insertMany([
-        {name: 'Bicep Workout', 
-        exercises: [
-            { 
-                name: 'Hammer Curl',
-                video: 'https://www.youtube.com/embed/zC3nLlEvin4',
-                reps: 12,
-                sets: 3,
-                rest: 30,
-                muscleGroup: muscleGroup[1]._id
-            },
-            { 
-                name: 'Alternating Bicep Curl',
-                video: 'https://www.youtube.com/embed/sAq_ocpRh_I',
-                reps: 12,
-                sets: 3,
-                rest: 30,
-                muscleGroup: muscleGroup[1]._id
-            }]},
-        {name: 'Tricep Workout',
-        exercises: [
-            {
-                name: 'Skull Crushers',
-                video: 'https://www.youtube.com/embed/d_KZxkY_0cM',
-                reps: 8,
-                sets: 3,
-                rest: 30,
-                muscleGroup: muscleGroup[8]._id
-            }
-        ]
-        }]);
-    console.log("Workout Seeded");
+  console.log("users seeded");
 
-    await User.deleteMany();
-
-    await User.create({
-        firstName: 'Nicole',
-        lastName: 'Wrzosek',
-        email: "nicole@email.com",
-        password: 'password123',
-        bmi: 25.24,
-        workouts: [workouts[0], workouts[1]]
-    });
-
-    console.log('users seeded')
-
-process.exit();
+  process.exit();
 });
