@@ -5,6 +5,17 @@ import { QUERY_EXERCISES, QUERY_MUSCLEGROUPS } from "../../utils/queries";
 import { useQuery, useLazyQuery } from "@apollo/client";
 
 
+
+function submitWorkout(exercise){
+  // const state = useSelector((state) => state);
+  const exerciseIds = [];
+  exercise.forEach((exercise) => {
+    for( let i = 0; i < exercise.length; i++){
+      exerciseIds.push(exercise._id);
+    }
+  })
+}
+
 function Workout() {
   console.log("Workout");
 
@@ -64,19 +75,18 @@ function Workout() {
                 console.log(exercise);
                 return (
                   <WorkoutCard
-                    key={exercise._id}
-                    _id={exercise._id}
-                    name={exercise.name}
-                    video={exercise.video}
-                    reps={exercise.reps}
-                    sets={exercise.sets}
-                    rest={exercise.rest}
+                  key={exercise._id}
+                  _id={exercise._id}
+                  name={exercise.name}
+                  video={exercise.video}
+                  reps={exercise.reps}
+                  sets={exercise.sets}
+                  rest={exercise.rest}
                   />
-                )
-              })
-
-
-            )}
+                  )
+                })
+                )}
+                {/* <button onClick={submitWorkout(exercise)}>Save</button> */}
           </div>
         </div>
       </div>
