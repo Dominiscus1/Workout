@@ -11,7 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 import { default as Navbar } from './compnent/navbar/navbar';
 import { default as Header } from './compnent/header/Header';
 import { default as Profile } from './compnent/profile/Profile';
-// import { default as Workout} from './compnent/workout/Workout.js';
+import { default as Workout} from './compnent/workout/Workout.js';
 import { default as Register} from './pages/Register';
 
 const httpLink = createHttpLink({
@@ -41,7 +41,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Header} />
           <Route path="/Profile" exact component={() => <Profile />} />
-          {/* <Route path="/Workout" exact component={() => <Workout />} /> */}
+          <Route path="/Workout" exact component={() => <Workout />} />
           <Route path="/Register" exact component={() => <Register />} />
         </Switch>
       </Router>
