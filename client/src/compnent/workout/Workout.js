@@ -56,17 +56,12 @@ function Workout(props) {
               <img src={homepageImg} alt="" className="homeImg"></img>
             </div>
             <div className="col__2">
-              <h1 className="title__heading">Workout</h1>
+              <h1 className="title__heading">How does one workout?</h1>
               <div className="heading__meta">
-                <p className="heading__text p__color">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                <p className="heading__text p__color text__align__center">
+                  Do you sit on a computer all day coding your life away wondering how will you
+                  ever get fit? We got the solution for you! With "E-Ripped" you can start getting
+                  off that chair and get <strong style={{fontSize:'28px'}}>RIPPED</strong>.
                 </p>
                 <select
                   onChange={(e) => setMuscleGroup(e.target.value)}
