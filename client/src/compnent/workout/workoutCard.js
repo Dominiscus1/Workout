@@ -31,12 +31,10 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
   function saveExercise() {
     console.log("Exercises Saved");
     let exercise = {
-      _id,
-      name,
+      _id
     };
 
     let workoutArray = [...exercises, exercise];
-
     console.log(workoutArray);
 
     setExercises(workoutArray);
