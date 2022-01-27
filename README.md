@@ -1,4 +1,4 @@
-# Workout
+# E-Ripped
 
 [![License Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&link=https://choosealicense.com/licenses/mit/)](https://choosealicense.com/licenses/mit/)
 
@@ -19,9 +19,10 @@
   ## Screenshot
 
   ### Homepage
+  ![](https://github.com/Dominiscus1/Workout/blob/515fe65dd721e547c16e7188a5210222d581bec1/client/public/homepage_ss.png)
 
   ### Exercises
-
+  ![](https://github.com/Dominiscus1/Workout/blob/515fe65dd721e547c16e7188a5210222d581bec1/client/public/exercises.png)
 
   ## License
 [![License Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&link=https://choosealicense.com/licenses/mit/)](https://choosealicense.com/licenses/mit/)
