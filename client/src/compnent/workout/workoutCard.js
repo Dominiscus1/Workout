@@ -10,7 +10,7 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
 
   const handleSaveWorkout = async (event) => {
     event.preventDefault();
-
+    console.log("Something");
     try {
       const { data } = addWorkout({
         variables: {
@@ -30,12 +30,10 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
   function saveExercise() {
     console.log("Exercises Saved");
     let exercise = {
-      _id,
-      name,
+      _id
     };
 
     let workoutArray = [...exercises, exercise];
-
     console.log(workoutArray);
 
     setExercises(workoutArray);
@@ -48,7 +46,7 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
   return (
     <div>
       <div className="max-w-sm rounded shadow-lg" style={{backgroundColor: '#446161'}}>
-        <h1 className="px-6 py-4 font-bold text-xl mb-2">
+        <div className="px-6 py-4 font-bold text-xl mb-2">
           <div className="video-responsive w-full" style={{borderRadius: "5px"}}>
             <iframe
               width="350"
@@ -61,26 +59,32 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
             />
           </div>
           {name} <br />
-          <p class="text-gray-700 text-base">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <p className="text-gray-700 text-base">
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
               Reps: {reps}
             </span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
               Sets: {sets}
             </span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
               Rests: {rest} Seconds
             </span>
           </p>
           <div>
           {Auth.loggedIn() ? (
+            <div>
             <button className="saveButton btn1" onClick={saveExercise}>
               Save Exercise
-            </button> ) : (
+            </button>
+            <button className="saveButton btn1" onClick={handleSaveWorkout}>
+            Save Entire Workout
+          </button>
+          </div>
+             ) : (
               <span>Log in to save workout</span>
             )}
           </div>
-        </h1>
+        </div>
       </div>
     </div>
   );
