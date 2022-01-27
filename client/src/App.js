@@ -9,10 +9,10 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { default as Navbar } from './compnent/navbar/navbar';
-import { default as Header } from './compnent/header/Header';
 import { default as Profile } from './compnent/profile/Profile';
 import { default as Workout} from './compnent/workout/Workout.js';
 import { default as Register} from './pages/Register';
+import { default as Footer } from './compnent/footer/Footer';
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -41,11 +41,11 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Header} />
+          <Route path="/" exact component={() => <Workout setExercises={setExercises} exercises={exercises}/>} />
           <Route path="/Profile" exact component={() => <Profile exercises={exercises} />} />
-          <Route path="/Workout" exact component={() => <Workout setExercises={setExercises} exercises={exercises}/>} />
           <Route path="/Register" exact component={() => <Register />} />
         </Switch>
+        <Footer />
       </Router>
     </ApolloProvider>
   );

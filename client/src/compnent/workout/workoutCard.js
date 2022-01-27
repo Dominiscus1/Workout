@@ -18,7 +18,6 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
         },
       });
 
-      // window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -48,10 +47,9 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
 
   return (
     <div>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="max-w-sm rounded shadow-lg" style={{backgroundColor: '#446161'}}>
         <h1 className="px-6 py-4 font-bold text-xl mb-2">
-          {name} <br />
-          <div className="video-responsive w-full">
+          <div className="video-responsive w-full" style={{borderRadius: "5px"}}>
             <iframe
               width="350"
               height="250"
@@ -62,6 +60,7 @@ const WorkoutCard = ({setExercises, exercises, _id, name, video, reps, sets, res
               title="Embedded youtube"
             />
           </div>
+          {name} <br />
           <p class="text-gray-700 text-base">
             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
               Reps: {reps}
