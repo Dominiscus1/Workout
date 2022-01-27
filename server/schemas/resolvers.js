@@ -8,22 +8,24 @@ const resolvers = {
       return await MuscleGroup.find();
     },
     exercises: async (parent, args) => {
-      return await Exercise.find({
-        muscleGroup: args.muscleGroup,
-      }).populate("muscleGroup");
+      return await Exercise.find(
+        {
+          muscleGroup: args.muscleGroup
+        })
+      .populate('muscleGroup');
     },
-    // userWorkouts: async (parent, args) => {
-    //   return await User.find().populate({
-    //     path: 'workouts',
-    //     populate: 'exercises'
-    //   })
-    // },
+    userWorkouts: async (parent, args) => {
+      return await User.find().populate({
+        path: 'workouts',
+        populate: 'exercises'
+      })
+    },
 
     userWorkout: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "workouts",
-          populate: "exercises",
+          path:'workouts',
+          populate: 'exercises'
         });
         return user;
       }
@@ -39,50 +41,35 @@ const resolvers = {
       return { token, user };
     },
     addWorkout: async (parent, { exercises }, context) => {
-      console.log(exercises);
-      console.log(context.user);
       if (context.user) {
-        const workoutArray = [];
-        const exerciseArray = [];
-        exercises.forEach((exercise) => {
-          const exerciseData = await Exercise.findById(exercise);
-          console.log(exerciseData);
-          exerciseArray.push(exerciseData);
-        });
-        const workout = {
-          name: context.user.firstName,
-          exercises: exerciseArray,
-        };
-        await User.findByIdAndUpdate(
-          context.user._id,
-          { $push: { workouts: workout } },
-          { new: true }
-        );
+        const workout = new Workout({ exercises });
+
+        await User.findByIdAndUpdate(context.user._id, { $push: { workouts: workout } });
 
         return workout;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
     login: async (parent, { email, password }, context) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
-
+      
       context.user = user;
 
       return { token, user };
-    },
-  },
+    }
+  }
 };
 module.exports = resolvers;
