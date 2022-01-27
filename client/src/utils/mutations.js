@@ -33,8 +33,8 @@ export const ADD_USER = gql `
 `
 
 export const ADD_WORKOUT = gql`
-    mutation addWorkout($name:String, $exercises:[ID]!){
-        addWorkout(name:$name, exercises:$exercises){
+    mutation addWorkout($exercises:[ID]!){
+        addWorkout(exercises:$exercises){
             _id
             name
             video

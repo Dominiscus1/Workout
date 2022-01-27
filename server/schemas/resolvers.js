@@ -14,12 +14,12 @@ const resolvers = {
         })
       .populate('muscleGroup');
     },
-    userWorkouts: async (parent, args) => {
-      return await User.find().populate({
-        path: 'workouts',
-        populate: 'exercises'
-      })
-    },
+    // userWorkouts: async (parent, args) => {
+    //   return await User.find().populate({
+    //     path: 'workouts',
+    //     populate: 'exercises'
+    //   })
+    // },
 
     userWorkout: async (parent, args, context) => {
       if (context.user) {
@@ -44,7 +44,7 @@ const resolvers = {
       if (context.user) {
         const workout = new Workout({ exercises });
 
-        await User.findByIdAndUpdate(context.user._id, { $push: { workouts: workout } });
+        await User.findByIdAndUpdate(context.user._id, { $push: { workouts: workout }} ,{new:true});
 
         return workout;
       }
