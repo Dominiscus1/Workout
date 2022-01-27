@@ -12,6 +12,9 @@
 
   ## Description
   E-Ripped helps users figure out the best exercises to get into shape. The user has access to a wide variety of muscle groups to choose from with associated exercises. Each exercise comes with a video along with sample reps, sets and rest amount. Users can also save workouts to their profile for future use, along with a BMI calculator to check on their progress.
+  
+  ## Deployed-Link
+  https://e-ripped.herokuapp.com/
 
   ## Installations
   npm install
