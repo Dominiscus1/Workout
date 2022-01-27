@@ -1,5 +1,4 @@
 # Workout
-# Workout
 
 [![License Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&link=https://choosealicense.com/licenses/mit/)](https://choosealicense.com/licenses/mit/)
 
@@ -12,13 +11,17 @@
   - [Contributors](#Contributors)
 
   ## Description
+  E-Ripped helps users figure out the best exercises to get into shape. The user has access to a wide variety of muscle groups to choose from with associated exercises. Each exercise comes with a video along with sample reps, sets and rest amount. Users can also save workouts to their profile for future use, along with a BMI calculator to check on their progress.
 
   ## Installations
   npm install
 
   ## Screenshot
 
-  ## Video
+  ### Homepage
+
+  ### Exercises
+
 
   ## License
 [![License Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&link=https://choosealicense.com/licenses/mit/)](https://choosealicense.com/licenses/mit/)
